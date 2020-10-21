@@ -66,19 +66,21 @@
             <p>{pick_message(score / results.length)}</p>
             <button on:click={() => dispatch('restart')}>Back to main screen</button>
         </div>
-    {:else}
+    {:else if ready}
         {#await promises[i] then [a, b]}
             <div
                 class="game"
                 in:fly={{duration: 200, y:20}}
                 out:fly={{duration: 200, y:-20}}
+                on:outrostart={() => ready = false}
+                on:outroend={() => ready = true}
             >
                 <div class="card-container">
                     <Card
-                        showprice={!!last_result}
-                        winner={a.price >= b.price}
                         celeb={a}
                         on:select={() => submit(a, b, 1)}
+                        showprice={!!last_result}
+                        winner={a.price >= b.price}
                     />
                 </div>
 
@@ -86,15 +88,17 @@
                     <button
                         class="same"
                         on:click={() => submit(a, b, 0)}
-                    >same price</button>
+                    >
+                        same price
+                    </button>
                 </div>
 
                 <div class="card-container">
                     <Card
-                        showprice={!!last_result}
-                        winner={a.price <= b.price}
                         celeb={b}
                         on:select={() => submit(a, b, -1)}
+                        showprice={!!last_result}
+                        winner={a.price <= b.price}
                     />
                 </div>
             </div>
