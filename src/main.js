@@ -4,4 +4,8 @@ const app = new App({
 	target: document.body
 });
 
+if ('serviceWorder' in navigator) {
+	navigator.serviceWorker.register('/service-worker.js')
+}
+
 export default app;
