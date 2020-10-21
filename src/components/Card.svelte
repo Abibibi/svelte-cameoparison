@@ -68,6 +68,25 @@
         text-overflow: ellipsis;
     }
 
+    .price {
+        color: white;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: rgba(0,0,0,0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 4em;
+        font-weight: 700;
+    }
+
+    .price.large {
+        font-size: 6em;
+    }
+
     @media (min-width: 640px) {
         .card-outer {
             height: 0;

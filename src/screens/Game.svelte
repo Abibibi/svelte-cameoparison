@@ -67,6 +67,8 @@
             <div class="game">
                 <div class="card-container">
                     <Card
+                        showprice={!!last_result}
+                        winner={a.price >= b.price}
                         celeb={a}
                         on:select={() => submit(a, b, 1)}
                     />
@@ -81,6 +83,8 @@
 
                 <div class="card-container">
                     <Card
+                        showprice={!!last_result}
+                        winner={a.price <= b.price}
                         celeb={b}
                         on:select={() => submit(a, b, -1)}
                     />
